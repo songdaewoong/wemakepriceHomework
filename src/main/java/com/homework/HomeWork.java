@@ -28,9 +28,9 @@ public class HomeWork {
 			url = "http://" + url;
 		}
 		
-		System.out.println("url : " + url);
-		System.out.println("type : " + type);
-		System.out.println("mok : " + mok);
+//		System.out.println("url : " + url);
+//		System.out.println("type : " + type);
+//		System.out.println("mok : " + mok);
 		
 		try{
 			Document doc = Jsoup.connect(url).get();
@@ -61,13 +61,13 @@ public class HomeWork {
 				data = replaceString(data, "\\<.*?\\>");
 			}
 			
-			System.out.println("data : " +data );
+//			System.out.println("data : " +data );
 			
 			String numberString = data.replaceAll("[^0-9]", "");
-			System.out.println("numberString : " + numberString);
+//			System.out.println("numberString : " + numberString);
 			
 			String alphabetString = data.replaceAll("[0-9]", "");
-			System.out.println("alphabetString : " + alphabetString);
+//			System.out.println("alphabetString : " + alphabetString);
 			
 			StringBuilder data2 = new StringBuilder();
 			
