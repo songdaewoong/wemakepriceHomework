@@ -41,7 +41,8 @@ public class HomeWork {
 			
 //			Stream<String> replaceStream = Stream.of("[ㄱ-힣]", "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]", "\\s");
 //			replaceStream.forEach(f -> replaceString(data, f));
-			
+
+			//한글, 특수문자, 공백 제거
 			String[] replaceArr = {"[ㄱ-힣]", "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]", "\\s"};
 			for( String replace : replaceArr ) {
 				data = replaceString(data, replace);
@@ -62,21 +63,23 @@ public class HomeWork {
 			}
 			
 //			System.out.println("data : " +data );
-			
+
+			//숫자만 존재하는 String
 			String numberString = data.replaceAll("[^0-9]", "");
 //			System.out.println("numberString : " + numberString);
-			
+
+			//알파벳만 존재하는 String
 			String alphabetString = data.replaceAll("[0-9]", "");
 //			System.out.println("alphabetString : " + alphabetString);
 			
-			StringBuilder data2 = new StringBuilder();
+			StringBuilder viewDdata = new StringBuilder();
 			
 			String[] strArray = alphabetString.split("");//알파벳 배열
 			String[] numArray = numberString.split("");//숫자 배열
 			int numIndex = 0;//숫자배열에서 사용할 인덱스
 			
 			for(int i = 0 ; i < strArray.length ; i++  ) {
-				data2.append(strArray[i]);//기본적으로 다음문자를 붙임.
+				viewDdata.append(strArray[i]);//기본적으로 다음문자를 붙임.
 				
 				//for문 마지막일 때는 실행하지 않는다.
 				if( i+1 != strArray.length ) {
@@ -85,7 +88,7 @@ public class HomeWork {
 						//숫자가 상대적으로 적으므로 배열길이보다 작을때만 숫자를 붙여준다.
 						//ArrayIndexOutOfBoundsException
 						if( numIndex < numArray.length ) {
-						data2.append(numArray[numIndex]);
+							viewDdata.append(numArray[numIndex]);
 							numIndex++;
 						}
 					}
@@ -93,14 +96,14 @@ public class HomeWork {
 			}
 			
 			//나머지 값
-			int remainder = data2.toString().length() % Integer.parseInt(mok);
+			int remainder = viewDdata.toString().length() % Integer.parseInt(mok);
 			
 			//사용자 페이지에 전달할 값
 			model.addAttribute("url", url);
 			model.addAttribute("type", type);
 			model.addAttribute("mok", mok);
 			model.addAttribute("remainder", remainder);
-			model.addAttribute("data", data2.toString());
+			model.addAttribute("data", viewDdata.toString());
 
 
 		}catch(Exception e) {
