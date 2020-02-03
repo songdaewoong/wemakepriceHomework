@@ -21,7 +21,6 @@ public class CustomErrorController implements ErrorController{
 	
 	@RequestMapping("/error")
 	public ModelAndView handleError(HttpServletRequest request, Model model) {
-		System.out.println("aaa");
 		return new ModelAndView(new RedirectView("index"));
 	}
 }
